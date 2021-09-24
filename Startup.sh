@@ -39,12 +39,11 @@ if [ $fichar = "entrar"  ];
 fi
 
 #sistemas de seguridad de las copias
-if [ $usuario = "krip4us"  ];
+if [ $usuario = "root"  ];
 	then
 		clear
 		echo "BACKUP APP . . . ."
-		./media/srv230/LINUX/srv248/srv/backup_copia.ps1.sh
-
+		##??
 	else
 		exit
 fi
