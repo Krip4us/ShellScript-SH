@@ -22,16 +22,7 @@ function saludo(){
 	# FILE ANTERIOR BACKUP CONFIG
 	system_name=$(hostname -s)
 	date_anterior=$(date +"%m%d%Y" -d "-30 days")
-	file_anterior_backup="$system_name-$date_anterior.tgz"
-	# las copias se realizaran con las siguientes condiciones: margen de 1 mes
-	if [ -f $dest/$file_anterior_backup ]; 
-	then
-		echo "CONFIG(file_anterior_backup_config): la copia no se puede realizar"
-		exit
-	else
-		# la copia se realiza si todas las condiciones anteriores se incumplen
-		echo "CONFIG: la copia se creara"
-	fi
+	file_anterior_backup="$system_name-$date_anterior.tgz"	
 }
 saludo
 
@@ -44,6 +35,15 @@ function backup(){
 			exit
 		else
 			echo "no existe ninguna version de $day"
+			# las copias se realizaran con las siguientes condiciones: margen de 1 mes
+			if [ -f  $dest/$file_anterior_backup ]; 
+			then
+				echo "CONFIG(file_anterior_backup_config): la copia no se puede realizar"
+				exit
+			else
+				# la copia se realiza si todas las condiciones anteriores se incumplen
+				echo "CONFIG: la copia se creara"
+			fi
 			echo "continue?????:(y/n):" ; read ask_continue
 			if [ $ask_continue == "y" ];
 			then
