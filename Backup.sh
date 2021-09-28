@@ -24,7 +24,8 @@ function saludo(){
 	date_anterior=$(date +"%m%d%Y" -d "-30 days")
 	file_anterior_backup="$system_name-$date_anterior.tgz"
 	# las copias se realizaran con las siguientes condiciones: margen de 1 mes
-	if [ -f $dest/$file_anterior_backup ]; then
+	if [ -f $dest/$file_anterior_backup ]; 
+	then
 		echo "CONFIG(file_anterior_backup_config): la copia no se puede realizar"
 		exit
 	else
